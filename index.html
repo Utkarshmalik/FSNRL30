@@ -9,237 +9,42 @@
 
     <style>
 
-        body{
-       
-        }
-
-        .course{
-            background-color: red;
-            border:3px solid black;
-            width:400px;
-            margin:10px;
-            padding:10px;
-            position: relative;
-        }
-
-        .banner{
-            /* position: static;
-            top:0px;
-            right:5px; */
-        }
-
-        .navbar{
-            background-color: black;
-            height:50px;
-            position: sticky;
-            top:0px;
-        }
-
-        .message{
-            background-color: pink;
-            position: sticky;
-            top:0px;
-        }
-
-        .htmlCourse{
-            /* background-color: yellow;
-            position: relative;
-            left:20px; */
-
-        }
-
-        button{
-
-            position: absolute;
-            right:0px;
-            top:0px;
+        .container{
+            display: flex;
+            flex-direction:row;
+            border:3px solid red;
+            height:100vh;
+            align-content: space-evenly;
         }
 
         .box{
-            margin:20px;
-            padding:20px;
+            padding: 15px;
+            width: 10%;
+            height: 20%;
         }
-
-        .box1{
-            background-color: red;
-            position: relative;
-
-        }
-
-        .box2{
-            background-color: pink;
-        }
-
-        .box3{
-            background-color: green;
-            position: absolute;
-            top:0px;
-        }
-
-        .box3 p{
-            position: absolute;
-            bottom:0px;
-            right: 0px;
-        }
-
-        span{
-            background-color:pink;
-            border:1px solid red;
-            display: inline-block;
-            width:100px;
-            height: 100px;
-        }
-
         
+
+        .box1{background-color: green;align-self: flex-end;}
+        .box2{background-color: blue;}
+        .box3{background-color: red;}
+        .box4{background-color: yellow;align-self: center;}
+        .box5{background-color: pink;}
+        .box6{background-color: orange;}
+
+
     </style>
 
     <body>
-        <p class="navbar" > Navbar </p>
 
+        <div class="container">
 
-        <h1> Courses </h1>
-
-        <div class="box box1">
-
-            <div class="box box2">
-
-                <div class="box box3">
-
-                    <p> Message 1 </p>
-                    <!-- <span> Message 2</span>
-                    <span> Message 3</span>
-                    <span> Message 4</span> -->
-
-                </div>
-            </div>
-
+            <div class="box box1"> First </div>
+            <div class="box box2"> Second </div>
+            <div class="box box3"> Third </div>
+            <div class="box box4"> Fourth </div>
+            <div class="box box5"> Fifth </div>
+            <div class="box box6"> Sixth </div>
         </div>
-
-        <p class="message"> This is some important Message </p>
-
-
-
-        <p class="banner"> This is some important information </p>
-
-        <div class="htmlCourse course" style="background-color:pink" >
-            <h2> HTML </h2>
-            <p> Its a markup language </p>
-            <button> Buy Course </button>
-        </div>
-        
-        <div class="course">
-            <h2> CSS </h2>
-            <p> Its a styling language </p>
-        </div>
-
-        <div class="course">
-            <h2 > Javascript </h2>
-            <p> Its a scripting language </p>
-        </div>
-
-        <div class="course">
-            <h2  > Nodejs </h2>
-            <p> Its a server side language </p>
-        </div>
-
-        <div class="course" style="background-color:pink" >
-            <h2> HTML </h2>
-            <p> Its a markup language </p>
-        </div>
-        
-        <div class="course">
-            <h2> CSS </h2>
-            <p> Its a styling language </p>
-        </div>
-
-        <div class="course">
-            <h2 > Javascript </h2>
-            <p> Its a scripting language </p>
-        </div>
-
-        <div class="course">
-            <h2  > Nodejs </h2>
-            <p> Its a server side language </p>
-        </div>
-
-        <div class="course" style="background-color:pink" >
-            <h2> HTML </h2>
-            <p> Its a markup language </p>
-        </div>
-        
-        <div class="course">
-            <h2> CSS </h2>
-            <p> Its a styling language </p>
-        </div>
-
-        <div class="course">
-            <h2 > Javascript </h2>
-            <p> Its a scripting language </p>
-        </div>
-
-        <div class="course">
-            <h2  > Nodejs </h2>
-            <p> Its a server side language </p>
-        </div>
-
-        <div class="course" style="background-color:pink" >
-            <h2> HTML </h2>
-            <p> Its a markup language </p>
-        </div>
-        
-        <div class="course">
-            <h2> CSS </h2>
-            <p> Its a styling language </p>
-        </div>
-
-        <div class="course">
-            <h2 > Javascript </h2>
-            <p> Its a scripting language </p>
-        </div>
-
-        <div class="course">
-            <h2  > Nodejs </h2>
-            <p> Its a server side language </p>
-        </div>
-
-
-        <form>
-            <label for="firstName"> First Name: </label>
-            <input id="firstName" type="text"/> 
-            <label> Last Name Name: </label>
-            <input type="text"/> 
-            <br/>
-
-            <div style="color:blue" >
-                <input type="radio" id="react" name="favourateCourse" value="React JS" /> 
-                <!-- <span> React</span> -->
-                <label for="react">React </label> 
-
-                <input type="radio" id="mongoDB" name="favourateCourse"  value="Mongo DB">
-                <label for="mongoDB">mongoDB </label> 
-
-                <input type="radio" id="nodejs" name="favourateCourse"  value="Node JS">
-                <label for="nodejs">NodeJS </label> 
-
-                <input type="radio" id="javascript" name="favourateCourse"  value="react">
-                <label for="javascript">Javascript </label> 
-            </div>
-
-            <div>
-                <input type="checkbox" id="react" name="favourateCourse1" value="React JS" /> 
-                <label for="react">React </label> 
-
-                <input type="checkbox" id="mongoDB" name="favourateCourse2"  value="Mongo DB">
-                <label for="mongoDB">mongoDB </label> 
-
-                <input type="checkbox" id="nodejs" name="favourateCourse3"  value="Node JS">
-                <label for="nodejs">NodeJS </label> 
-
-                <input type="checkbox" id="javascript" name="favourateCourse4"  value="react">
-                <label for="javascript">Javascript </label> 
-            </div>
-
-        </form>
 
     </body>
 
