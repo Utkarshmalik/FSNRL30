@@ -1,208 +1,106 @@
+// function getAllusers(){
 
+//     //it will make a API call which will take 1 second 
 
-//IIFEs 
-// Immidiately invoked function expressions
+//     let users=[];
 
+//     setTimeout(()=>{
+//         users=[
+//             {userName:"Utkarsh", email:"utmalik@amazon.com"},
+//             {userName:"Rahul",email:"rahul@fyi.com"}
+//         ];
+//     },1000);
 
-
-// (function(){
-//     console.log("hello");
-// })();
-
-
-
-//arrow functions
-
-// const add = function(a,b){
-//     return a+b;
+//     return users;
 // }
 
-// const add =  (a,b) => a+b;
 
-// console.log(add(3,4));
+// function findUser(userName){
+//     const users = getAllusers();
+//     const user = users.find((user)=> user.userName === userName);
+//     return user;
+// }
+
+// console.log(findUser('Rahul'));
 
 
 
-// let person = {
+// const promise = new Promise((resolve,reject)=>{
 
-//     firstName:"Utkarsh",
-//     lastName:"Malik", 
-//     age:27,
-//     sayHi: function(){
-//         console.log("Hii");
-//     },
-//     getFullName:function(){
+//     //make some operation
 
-//         return this.firstName + " " + this.lastName;
+//     if(success){
+//         resolve(value);
+//     }else{
+//         reject(error);
 //     }
-// }
 
-// console.log(person.getFullName());
+// })
 
 
-// const getFullName = person.getFullName;
 
-// const fullName= getFullName();
-// console.log(fullName);
 
+function getUsers(){
 
+     return new Promise((resolve,reject)=>{
 
+            //api call
+            setTimeout(()=>{
 
-//this keywords : 
+            resolve([{userName:"Utkarsh", email:"utmalik@amazon.com"},
+                {userName:"Rahul",email:"rahul@fyi.com"}]);
 
-// value of this keyword inside of methods point to the object with which
-//that object is called with 
+        },1000);
+     });
+}
 
 
-
-
-
-
-//this -> window 
-
-
-var a = "hello";
-
-// console.log(this.a);
-
-
-
-
-
-//constructor functions 
-
-// let person = {
-
-//     firstName:"Utkarsh",
-//     lastName:"Malik"
-// // }
-
-
-
-// function Person(firstName,lastName){
-//     this.firstName=firstName;
-//     this.lastName=lastName;
-//     this.getFullName= function(){
-//         return this.firstName + " " + this.lastName;
-//     }
-// }
-
-// let person1 = new Person("Utkarsh", "Malik");
-
-// let person2  = new Person("Rahul", "Jain");
-
-// console.log(person1);
-// console.log(person2);
-
-// console.log(person1.toString());
-
-
-
-
-
-// function Person(firstName,lastName){
-//     this.firstName=firstName;
-//     this.lastName=lastName;
-// }
-
-// let person1 = new Person("Utkarsh", "Malik");
-
-// let person2  = new Person("Rahul", "Jain");
-
-
-
-// Person.prototype.getFullName = ()=>{
-//     console.log("hello");
-// }
-
-// console.log(Person.prototype);
-
-
-
-
-
-// const obj = {name:"Utkarsh"};
-
-// const obj = new Object({name:"Utkarsh"});
-
-// console.log(Object.prototype);
-
-// console.log(obj.toString());
-
-
-
-// function Person(firstName,lastName){
-//     this.firstName=firstName;
-//     this.lastName=lastName;
-// }
-
-// let person1 = new Person("Utkarsh", "Malik");
-
-// let person2  = new Person("Rahul", "Jain");
-
-
-
-// Person.prototype.getFullName = ()=>{
-//     console.log("hello");
-// }
-
-// console.log(person1.toString());
-
-
-// console.log(person1.__proto__.__proto__ === Object.prototype);
-// console.log(Person.prototype.__proto__ === Object.prototype);
-
-
-
-// let arr=["1","12","12342"]
-// let arr = new Array("1","12","12342");
-
-// console.log(typeof arr);
-
-
-// console.log(arr.__proto__ === Array.prototype);
-
-// arr.toString = ()=> 5;
-
-// console.log(arr.toString());
-
-// console.log(Object.prototype.__proto__);
-
-
-
-//methods : forEach, map, filter, reduce 
-
-
-// call apply and bind are methods 
-
-// const person1={
-//     firstName:"Utkarsh",
-//     lastName:"Malik"
+// function findUser(userName){
+//     const users = getAllusers();
+//     const user = users.find((user)=> user.userName === userName);
+//     return user;
 // }
 
 
-// const person2={
-//     firstName:"Rahul",
-//     lastName:"Jain"
+function findUser(userName){
+
+    getUsers()
+    .then((users)=>{
+        const user = users.find((user)=> user.userName === userName);
+        console.log(user);
+    })
+    .catch((err)=>{
+        console.log(err);
+    })
+}
+
+findUser('Rahul');
+console.log("Utkarsh");
+
+
+
+
+
+
+
+
+
+
+// console.log(1);
+
+// setTimeout(()=>{
+//     console.log(2);
+// },1000);
+
+// setTimeout(()=>{
+//     console.log(3);
+// },0);
+
+// console.log(4);
+
+
+// for(let i=0;i<4;i++){
+//     setTimeout(function(){
+//         console.log(i);
+//     },1000)
 // }
-
-// function getFullName(age,x){
-//     return this.firstName + " " +  this.lastName + age +x;
-// }
-
-
-// const fullName = getFullName.call(person1,10,20);
-// console.log(fullName);
-
-
-// const fullNameWIthApply = getFullName.apply(person1,[10,20]);
-// console.log(fullNameWIthApply);
-
-
-// const getFullNameFn = getFullName.bind(person1);
-
-// getFullNameFn(10,20);
-
-
-
-
