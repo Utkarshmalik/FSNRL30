@@ -1833,7 +1833,6 @@ const users =  [
     }
   ];
 
-
 function displayUsers(users){
     return    users.map((userDetails)=>{
                     return <User userInfo={userDetails} />
