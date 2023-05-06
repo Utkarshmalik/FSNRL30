@@ -1,0 +1,13 @@
+
+
+.login-form{
+
+    display: flex;
+    flex-direction: column;
+    height:50vh;
+    border:3px solid black;
+    width:50%;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
