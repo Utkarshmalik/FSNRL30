@@ -6,23 +6,11 @@ import { useState } from 'react';
 
 function App() {
 
-  console.log("App function called");
-
   const [isLoggedIn, changeIsLoggedInState] = useState(false);
-
-  const test=()=>{
-    setTimeout(()=>{
-      changeIsLoggedInState(!isLoggedIn);
-    },3000);
-  }
-
-  test();
 
   return (
     <div>
-      {
-        isLoggedIn ? <UserList/> : <Login/>
-      }
+      <UserList/>
     </div>
   );
 }

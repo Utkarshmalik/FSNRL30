@@ -1,12 +1,15 @@
 import Card from 'react-bootstrap/Card';
+import Button from 'react-bootstrap/Button';
+
 import ListGroup from 'react-bootstrap/ListGroup';
 
 function User(props){
 
     const user = props.userInfo;
+    const onDeleteFunction = props.onDelete;
 
     return <div>
-     <Card style={{border:"3px solid black", width: '18rem' }}>
+     <Card style={{border:"3px solid black", width: '19rem' }}>
       <Card.Img variant="top" src={user.image} />
       <Card.Body>
         <div>
@@ -21,9 +24,10 @@ function User(props){
         <ListGroup.Item> Phone: {user.phone} </ListGroup.Item>
         <ListGroup.Item> University: {user.university} Vestibulum at eros</ListGroup.Item>
       </ListGroup>
-      <Card.Body>
+      <Card.Body style={{display:"flex",justifyContent:"space-between",alignItems:"center"}} >
         <Card.Link href="#"> {user.gender} </Card.Link>
         <Card.Link href="#"> {user.bloodGroup} </Card.Link>
+      <Button onClick={()=>onDeleteFunction(user.id)} variant="primary">Delete User </Button>
       </Card.Body>
     </Card>
     </div>
