@@ -4,10 +4,18 @@ import "./Login.css";
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
-function Login(){
+function Login(props){
+
+  const onLogin=(e)=>{
+    e.preventDefault(); 
+    //get the users data 
+    //make an API call
+
+    window.location.href="/users";
+  }
 
     return (
-        <Form>
+        <Form onSubmit={onLogin} >
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>Email address</Form.Label>
         <Form.Control type="email" placeholder="Enter email" />

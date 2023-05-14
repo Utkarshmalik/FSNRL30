@@ -3,9 +3,10 @@ import User from "../User/user";
 import "./userList.css";
 import Spinner from "../Spinner/spinner";
 import UserModal from "../UserModal/userModal";
+import { Button } from "react-bootstrap";
 var users=[];
 
-function UserList(){
+function UserList(props){
 
     console.log("Inside function");
 
@@ -104,6 +105,10 @@ function UserList(){
             <UserModal show={isUserModalOpen} onClose={onCloseUserModal} userId={selectedUser} />
 
         </div>
+
+        <Button onClick={()=>{
+          window.location.href="/"
+        }} style={{position:"fixed", right:"2px", top:"2px"}}  > Logout </Button>
         </div>
     )
 
