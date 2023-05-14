@@ -5,6 +5,7 @@ import UserList from "./components/UserList/userList";
 import { useState } from 'react';
 import { Button } from 'react-bootstrap';
 import {BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import UserForm from './components/UserForm/userForm';
 
 function App() {
 
@@ -19,6 +20,7 @@ function App() {
 
           <Route path="/" element={<Login />} />
           <Route path="/users" element={<UserList />} />
+          <Route path="/users/new" element={<UserForm />} />
 
         </Routes>
 

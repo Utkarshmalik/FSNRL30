@@ -90,6 +90,15 @@ function UserList(props){
         <div>
          <h1 style={{textAlign:"center"}} > Users List </h1>
 
+         <div style={{display:"flex",justifyContent:"flex-end"}}>
+          <Button onClick={()=>{
+          window.location.href="/users/new"
+        }}> Add new  </Button>
+               <Button onClick={()=>{
+          window.location.href="/"
+        }}  > Logout </Button>
+         </div>
+
          <div className="search-box" >
            <form>
             <input onChange={onSearchValueChange}  value={searchValue} type="text" />
@@ -106,9 +115,7 @@ function UserList(props){
 
         </div>
 
-        <Button onClick={()=>{
-          window.location.href="/"
-        }} style={{position:"fixed", right:"2px", top:"2px"}}  > Logout </Button>
+   
         </div>
     )
 
