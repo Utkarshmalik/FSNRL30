@@ -11,3 +11,13 @@ export async function getAllTickets(){
         }
     })
 }
+
+
+export async function updateTicket(ticket){
+
+    return axios.put(`${BASE_URL}/crm/api/v1/tickets/${ticket._id}`,ticket,{
+        headers:{
+            'x-access-token':localStorage.getItem("token")
+        }
+    })
+}

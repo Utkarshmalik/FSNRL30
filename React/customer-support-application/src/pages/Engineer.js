@@ -2,6 +2,7 @@ import SideBar from "../components/Sidebar/Sidebar";
 import { useEffect, useState } from "react";
 import { getAllTickets } from "../api/ticket";
 import TicketStatusDashboard from "../components/TicketStatusDashboard/TicketStatusDashboard";
+import TicketsTable from "../components/TicketsTable/TicketsTable";
 
 
 function Enginner(){
@@ -30,6 +31,10 @@ function Enginner(){
 
          <div className="col my-4" >
         <TicketStatusDashboard ticketDetails={ticketDetails} />
+           <hr/>
+        <div>
+        <TicketsTable ticketDetails={ticketDetails} />
+        </div>
         </div>
 
 
