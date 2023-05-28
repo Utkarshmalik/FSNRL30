@@ -6,11 +6,12 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 import 'react-circular-progressbar/dist/styles.css';
 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Auth from './pages/Auth';
+import Login from './pages/Auth';
 import Customer from './pages/Customer';
 import Enginner from './pages/Engineer';
 import Admin from './pages/Admin';
 import { ThemeProvider, createTheme } from '@mui/material';
+import Auth from './hoc/Auth';
 
 function App() {
 
@@ -20,12 +21,14 @@ function App() {
     <div>
 
       <ThemeProvider theme={defaultMaterialTheme}>
+     
+
       <Router>
         <Routes>
-          <Route path="/" element={<Auth/>} />
-          <Route path='/customer' element={<Customer/>} />
-          <Route path="/engineer" element={<Enginner/>} />
-          <Route path='/admin' element={<Admin/>} />
+          <Route path="/" element={<Login/>} />
+          <Route path='/customer' element={ <Auth> <Customer/> </Auth>} />
+          <Route path="/engineer" element={ <Auth><Enginner/>  </Auth> } />
+          <Route path='/admin' element={<Auth><Admin/></Auth>} />
         </Routes>
       </Router>
     </ThemeProvider>
