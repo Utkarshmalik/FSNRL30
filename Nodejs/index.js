@@ -26,5 +26,5 @@ require("./src/Routes/product.routes")(app)
 
 
 app.listen(serverConfig.PORT, ()=>{
-    console.log(`Your application is running on port ${port}`)
+    console.log(`Your application is running on port ${serverConfig.PORT}`)
 })
