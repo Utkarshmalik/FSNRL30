@@ -2,16 +2,23 @@ const userModal = require("../Models/user.modal");
 const bcrypt = require('bcrypt');
 const jwt = require("jsonwebtoken");
 const authConfig = require("../configs/auth.config");
+const { userTypes, userStatus } = require("../utils/constants");
 
 
 const registerUser = async (req,res)=>{
+
+    const userType = req.body.userType;
+    var status = (userType===userTypes.CUSTOMER ? userStatus.APPROVED : userStatus.PENDING);
+
 
     const newUser = new userModal({
             name:req.body.name,
             email:req.body.email,
             userId:req.body.userId,
             password:bcrypt.hashSync(req.body.password,10),
-            userType:req.body.userType
+            userType: req.body.userType,
+            userStatus:status
+
         })
 
     const savedUser = await newUser.save();
@@ -34,7 +41,7 @@ const loginUser = async (req,res)=>{
         return res.status(400).send({message:" Password passed is invalid"})
     }
 
-    var token = jwt.sign({id:user.userId},authConfig.SECRET,{expiresIn:60});
+    var token = jwt.sign({id:user.userId},authConfig.SECRET,{expiresIn:900});
 
     res.send({
         name:user.name,

@@ -59,14 +59,19 @@ const verifyJWT= async (req,res,next)=>{
         return res.status(403).send({message:"No Token provided"});
     }
 
-    jwt.verify(token, authConfig.SECRET, (err,payload)=>{
+    jwt.verify(token, authConfig.SECRET, async (err,payload)=>{
 
         if(err){
             return res.status(403).send({message:"Invalid JWT token passed"});
         }
 
         const userId = payload.id;
+
+         const user = await userModal.findOne({userId:userId});
+
         req.userId = userId;
+        req.id=user._id;
+        req.userRole=user.userType
 
         next();
 
@@ -75,13 +80,25 @@ const verifyJWT= async (req,res,next)=>{
 
 const verifyAdmin = async (req,res,next)=>{
 
-    const user = await userModal.findOne({userId:req.userId});
 
-    if(user && user.userType===userTypes.ADMIN){
+    if(req.userRole===userTypes.ADMIN){
         next();
     }else{
         return res.status(403).send({message:"Only Admin users are allowed to access this route"});
     }
+}
+
+const verifyAdminOrSelf = (req,res,next)=>{
+
+    const userIdAsked =  req.params.id.toLowerCase();
+    const loggedInUserId = req.userId;
+
+    if(req.userRole===userTypes.ADMIN || (userIdAsked===loggedInUserId)){
+        next();
+        return;
+    }
+
+    return res.status(403).send({message:"You are not authorised to access this route"})
 }
 
 
@@ -89,5 +106,6 @@ module.exports={
     validateSignUp,
     validateSignIn,
     verifyJWT,
-    verifyAdmin
+    verifyAdmin,
+    verifyAdminOrSelf
 }
