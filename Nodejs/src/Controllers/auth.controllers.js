@@ -3,6 +3,8 @@ const bcrypt = require('bcrypt');
 const jwt = require("jsonwebtoken");
 const authConfig = require("../configs/auth.config");
 const { userTypes, userStatus } = require("../utils/constants");
+const { sendEmail } = require("../utils/NotificationUtils");
+const { userLogin } = require("../templates/email/auth.scripts");
 
 
 const registerUser = async (req,res)=>{
@@ -42,6 +44,14 @@ const loginUser = async (req,res)=>{
     }
 
     var token = jwt.sign({id:user.userId},authConfig.SECRET,{expiresIn:900});
+
+     const {subject,html,text} =userLogin(user);
+
+     console.log(subject);
+     console.log(html);
+     console.log(text);
+
+    sendEmail([user.email],subject,text,html);
 
     res.send({
         name:user.name,

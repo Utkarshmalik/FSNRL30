@@ -2,14 +2,16 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const morgan = require('morgan');
-
+require('dotenv').config();
 const dbConfig = require("./src/configs/db.config");
 const serverConfig = require("./src/configs/server.config");
+var cachegoose = require('recachegoose');
 
 const app = express();
 
 app.use(bodyParser.json());
 app.use(morgan('combined'))
+
 
 
 mongoose.connect(dbConfig.DB_URL)
@@ -19,6 +21,11 @@ mongoose.connect(dbConfig.DB_URL)
 .catch(err=>{
     console.log("Couldnot connect to the DB")
 })
+
+
+cachegoose(mongoose, {
+  engine: 'memory'
+});
 
 require("./src/Routes/product.routes")(app)
 require("./src/Routes/auth.routes")(app);

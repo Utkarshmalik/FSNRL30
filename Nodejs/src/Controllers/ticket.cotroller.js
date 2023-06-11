@@ -5,8 +5,6 @@ const { ticketStatus, userTypes, userStatus } = require("../utils/constants");
 
 exports.createTicket= async (req,res)=>{
 
-    console.log(req.body);
-
     const {title, ticketPriority, description} = req.body;
 
     const ticket = {
@@ -37,6 +35,16 @@ exports.getAllTickets= async (req,res)=>{
 
     var condition = {};
 
+    const {maxPriority , minPriority , page , limit} = req.query;
+
+    if(maxPriority && minPriority){
+        condition = {$and: [{ ticketPriority: { $gte: minPriority } }, { ticketPriority: { $lte: maxPriority } }]};
+    }
+    else if(req.query.maxPriority){
+        //ticketPriority <= maxPriority
+        condition.ticketPriority = {$lte :req.query.maxPriority}
+    }
+
 
     if(req.userRole===userTypes.CUSTOMER){
         condition.requestor = req.id
@@ -44,10 +52,18 @@ exports.getAllTickets= async (req,res)=>{
         condition.assignee = req.id;
     }
 
-    console.log(condition);
+    const skipValue = page * limit;
 
-    const tickets = await TicketModal.find(condition).populate("assignee").populate("requestor");
+
+    try{
+        const tickets = await TicketModal.find(condition).populate("assignee").populate("requestor").cache(30)
+        .skip(skipValue).limit(limit).sort({ticketPriority:"asc"});
     return res.status(200).send(tickets);
+    }catch(err){
+        res.status(500).send(err.message);
+    }
+
+  
     
 }
 
