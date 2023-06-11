@@ -6,11 +6,13 @@ require('dotenv').config();
 const dbConfig = require("./src/configs/db.config");
 const serverConfig = require("./src/configs/server.config");
 var cachegoose = require('recachegoose');
+var cors = require('cors')
 
 const app = express();
 
 app.use(bodyParser.json());
 app.use(morgan('combined'))
+app.use(cors());
 
 
 
